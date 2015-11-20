@@ -34,5 +34,40 @@ public class DiamondParameterizedTest {
 		assertEquals(diamondParameter.getNumberOfLines(),
 				diamondParameter.toString().split("\n").length);
 	}
+	
+	@Test
+	public void testFirstAndLastLine() {
+		StringBuilder lineBuilder = new StringBuilder();
+		int n = 0;
+		while (n < (diamondParameter.getSize() - 1)) {
+			lineBuilder.append(" ");
+			n++;
+		}
+		lineBuilder.append("*\n");
+		
+		assertTrue(diamondParameter.toString().startsWith(lineBuilder.toString()));
+		assertTrue(diamondParameter.toString().endsWith(lineBuilder.toString()));
+	}
+	
+	@Test
+	public void testMiddleLine() {
+		StringBuilder lineBuilder = new StringBuilder();
+		lineBuilder.append("*");
+		int n = 0;
+		if (diamondParameter.getNumberOfLines() > 2) {
+			while (n < (diamondParameter.getNumberOfLines() - 2)) {
+				lineBuilder.append(" ");
+				n++;
+			}
+			lineBuilder.append("*");
+		}
+		lineBuilder.append("\n");
+		
+		int middleLineNumber = diamondParameter.getNumberOfLines() / 2 + 1; 
+		String middleLine = diamondParameter.toString().split("\n")[middleLineNumber - 1]
+				+ "\n";
+		
+		assertEquals(lineBuilder.toString(), middleLine);
+	}
 
 }

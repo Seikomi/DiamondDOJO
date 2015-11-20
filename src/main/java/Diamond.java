@@ -16,16 +16,36 @@ public class Diamond {
 	public String toString() {
 		StringBuilder diamondBuilder = new StringBuilder();
 		
+		int middleLineNumber = numberOfLines / 2 + 1;
+		
 		for (int lineNumber = 1 ; lineNumber <= numberOfLines ; lineNumber++) {
 			if (lineNumber == 1 || lineNumber == numberOfLines) {
 				diamondBuilder.append(createFirstLine());
-			} else if (lineNumber == 2) {
-				diamondBuilder.append("* *\n");
+			} else if (lineNumber == middleLineNumber) {
+				diamondBuilder.append(createMiddleLine());
 			} else {
 				diamondBuilder.append("\n");
 			}
 		}
 		return diamondBuilder.toString();
+	}
+
+	private String createMiddleLine() {
+		StringBuilder lineBuilder = new StringBuilder();
+		
+		
+		lineBuilder.append("*");
+		int n = 0;
+		if(numberOfLines > 2) {
+			while (n < (numberOfLines - 2)) {
+				lineBuilder.append(" ");
+				n++;
+			}
+			lineBuilder.append("*");
+		}
+		lineBuilder.append("\n");
+		
+		return lineBuilder.toString();
 	}
 
 	private String createFirstLine() {
