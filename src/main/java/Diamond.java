@@ -9,16 +9,33 @@ public class Diamond {
 	
 	@Override
 	public String toString() {
+		StringBuilder diamondBuilder = new StringBuilder();
+		
+		diamondBuilder.append(createFirstLine());
+		
 		switch (size) {
 		case 1 :
-			return "*";
+			return diamondBuilder.toString();
 		case 2 :
-			return " *\n"
+			return diamondBuilder.toString()
 			   	 + "* *\n"
-			     + " *";
+			     + " *\n";
 		default :
-			return "";
+			return diamondBuilder.toString();
 		}
+	}
+
+	private String createFirstLine() {
+		StringBuilder lineBuilder = new StringBuilder();
+		
+		int n = 0;
+		while (n < (size-1)) {
+			lineBuilder.append(" ");
+			n++;
+		}
+		lineBuilder.append("*\n");
+		
+		return lineBuilder.toString();
 	}
 
 }

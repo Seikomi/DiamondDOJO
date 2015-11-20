@@ -22,7 +22,7 @@ public class DiamondTest {
 	public void testCreateSizeOneDiamond() {
 		diamond = new Diamond(1);
 		
-		String diagram = "*";
+		String diagram = "*\n";
 		assertEquals(diagram, diamond.toString());
 	}
 	
@@ -32,8 +32,27 @@ public class DiamondTest {
 		
 		String diagram = " *\n"
 					   + "* *\n"
-					   + " *";
+					   + " *\n";
 		assertEquals(diagram, diamond.toString());
+	}
+	
+	@Test
+	public void testFirstLineFromOneSizeToTenSizeDiamond() {
+		for (int i = 1 ; i <= 10 ; i++) {
+			diamond = new Diamond(i);
+			
+			StringBuilder firstLineBuilder = new StringBuilder();
+			int n = 0;
+			while (n < (i-1)) {
+				firstLineBuilder.append(" ");
+				n++;
+			}
+			firstLineBuilder.append("*\n");
+			
+			System.out.println(diamond.toString());
+			assertTrue("fail on the line " + i, 
+					diamond.toString().startsWith(firstLineBuilder.toString()));
+		}
 	}
 
 }
