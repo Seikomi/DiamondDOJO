@@ -1,13 +1,39 @@
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class DiamondTest {
+	
+	private Diamond diamond;
+	
+	@Before
+	public void setUp() {
+		
+	}
+	
+	@After
+	public void tearDown() {
+		diamond = null;
+	}
 
 	@Test
 	public void testCreateSizeOneDiamond() {
-		Diamond diamond = new Diamond(1);
-		assertEquals("*", diamond.toString());
+		diamond = new Diamond(1);
+		
+		String diagram = "*";
+		assertEquals(diagram, diamond.toString());
+	}
+	
+	@Test
+	public void testCreateSizeTwoDiamond() {
+		diamond = new Diamond(2);
+		
+		String diagram = " *\n"
+					   + "* *\n"
+					   + " *";
+		assertEquals(diagram, diamond.toString());
 	}
 
 }

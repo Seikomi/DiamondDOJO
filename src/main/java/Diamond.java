@@ -9,7 +9,16 @@ public class Diamond {
 	
 	@Override
 	public String toString() {
-		return "*";
+		switch (size) {
+		case 1 :
+			return "*";
+		case 2 :
+			return " *\n"
+			   	 + "* *\n"
+			     + " *";
+		default :
+			return "";
+		}
 	}
 
 }
