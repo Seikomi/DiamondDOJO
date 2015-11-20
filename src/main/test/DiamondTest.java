@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DiamondTest {
-	
+
 	private Diamond diamond;
 	
 	@Before
@@ -50,7 +50,7 @@ public class DiamondTest {
 			firstLineBuilder.append("*\n");
 			
 			System.out.println(diamond.toString());
-			assertTrue("fail on the line " + i, 
+			assertTrue("fail on the diamond " + i, 
 					diamond.toString().startsWith(firstLineBuilder.toString()));
 		}
 	}
@@ -58,6 +58,28 @@ public class DiamondTest {
 	@Test (expected = NegativeSizeDiamondException.class)
 	public void testNegativeSizeDiamondException() {
 		diamond = new Diamond(-14);
+	}
+	
+	@Test
+	public void testLastLineFromOneSizeToTenSizeDiamond() {
+		
+		
+		for (int i = 1 ; i <= 10 ; i++) {
+			diamond = new Diamond(i);
+			DiamondParameterizedTest test = new DiamondParameterizedTest(diamond);
+			test.testDiamondIsInGoodSize();
+			
+			StringBuilder lastLineBuilder = new StringBuilder();
+			int n = 0;
+			while (n < (i-1)) {
+				lastLineBuilder.append(" ");
+				n++;
+			}
+			lastLineBuilder.append("*\n");
+			
+			assertTrue("fail on the diamond " + i, 
+					diamond.toString().endsWith(lastLineBuilder.toString()));
+		}
 	}
 
 }

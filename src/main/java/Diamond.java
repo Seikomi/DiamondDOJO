@@ -2,30 +2,30 @@
 public class Diamond {
 
 	private int size;
+	private int numberOfLines;
 
 	public Diamond(int size) {
 		if (size < 0) {
 			throw new NegativeSizeDiamondException();
 		}
-		this.size = size;		
+		this.size = size;
+		this.numberOfLines = size * 2 - 1;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder diamondBuilder = new StringBuilder();
 		
-		diamondBuilder.append(createFirstLine());
-		
-		switch (size) {
-		case 1 :
-			return diamondBuilder.toString();
-		case 2 :
-			return diamondBuilder.toString()
-			   	 + "* *\n"
-			     + " *\n";
-		default :
-			return diamondBuilder.toString();
+		for (int lineNumber = 1 ; lineNumber <= numberOfLines ; lineNumber++) {
+			if (lineNumber == 1 || lineNumber == numberOfLines) {
+				diamondBuilder.append(createFirstLine());
+			} else if (lineNumber == 2) {
+				diamondBuilder.append("* *\n");
+			} else {
+				diamondBuilder.append("\n");
+			}
 		}
+		return diamondBuilder.toString();
 	}
 
 	private String createFirstLine() {
@@ -40,5 +40,15 @@ public class Diamond {
 		
 		return lineBuilder.toString();
 	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public int getNumberOfLines() {
+		return numberOfLines;
+	}
+	
+	
 
 }
