@@ -35,5 +35,17 @@ public class DiamondTest {
 					   + " *\n";
 		assertEquals(diagram, diamond.toString());
 	}
+	
+	@Test
+	public void testCreateSizeThreeDiamond() {
+		diamond = new Diamond(3);
+		
+		String diagram = "  *\n"
+					   + " * *\n"
+					   + "*   *\n"
+					   + " * *\n"
+					   + "  *\n";
+		assertEquals(diagram, diamond.toString());
+	}
 
 }

@@ -69,5 +69,7 @@ public class DiamondParameterizedTest {
 		
 		assertEquals(lineBuilder.toString(), middleLine);
 	}
+	
+	
 
 }
