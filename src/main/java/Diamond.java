@@ -4,6 +4,9 @@ public class Diamond {
 	private int size;
 
 	public Diamond(int size) {
+		if (size < 0) {
+			throw new NegativeSizeDiamondException();
+		}
 		this.size = size;		
 	}
 	

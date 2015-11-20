@@ -54,5 +54,10 @@ public class DiamondTest {
 					diamond.toString().startsWith(firstLineBuilder.toString()));
 		}
 	}
+	
+	@Test (expected = NegativeSizeDiamondException.class)
+	public void testNegativeSizeDiamondException() {
+		diamond = new Diamond(-14);
+	}
 
 }
